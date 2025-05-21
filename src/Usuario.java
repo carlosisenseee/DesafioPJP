@@ -13,6 +13,9 @@ public class Usuario {
         }
     }
 
+    public void removeEmprestimo(Livro livro) {
+        emprestimos.remove(livro);
+    }
     public Usuario(String nome, String cpf) {
         setNome(nome);
         setCpf(cpf);

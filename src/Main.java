@@ -16,7 +16,7 @@ public class Main {
 					2 - Devolver um livro -
 					3 - Adicionar novo livro - ok
 					4 - Adicionar novo usuario - ok
-					5 - Remover livro -
+					5 - Remover livro - ok
 					6 - Remover usuario - ok
 					7 - Alterar livro -
 					8 - Alterar usuario -
@@ -79,8 +79,8 @@ public class Main {
 				System.out.println("- Remover um livro -");
 				System.out.println("Informe o isbn do livro");
 				String isbn1 = scan.next();
-				for (Livro y : acervo) {
-					if (y.getIsbn().equals((isbn1))) {
+				for (Livro l : acervo) {
+					if (l.getIsbn().equals((isbn1))) {
 						acervo.removeIf(item -> item.equals(isbn1));
 					}
 				}
