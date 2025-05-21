@@ -28,30 +28,33 @@ public class Main {
 			switch (temp) {
 			case 1:
 				break;
+
 			case 2:
 				break;
+
 			case 3:
-				case 3:
-					System.out.println("- Adicionar novo livro -");
-					System.out.print("Informe o titulo: ");
-					String titulo = scan.nextLine();
-					System.out.print("Informe o autor: ");
-					String autor = scan.nextLine();
-					System.out.print("informe o ISBN: ");
-					String isbn = scan.nextLine();
-					System.out.print("Informe o ano de publicação: ");
-					int anoPub = scan.nextInt();
-					boolean x = true;
-					for (Livro l : acervo) {
-						if (l.getIsbn().equals(isbn)) {
-					         System.out.println("Livro ja cadastrado");
-					         x = false;
-					     }
+				System.out.println("- Adicionar novo livro -");
+				System.out.print("Informe o titulo: ");
+				String titulo = scan.nextLine();
+				System.out.print("Informe o autor: ");
+				String autor = scan.nextLine();
+				System.out.print("informe o ISBN: ");
+				String isbn = scan.nextLine();
+				System.out.print("Informe o ano de publicação: ");
+				int anoPub = scan.nextInt();
+				boolean x = true;
+				for (Livro l : acervo) {
+					if (l.getIsbn().equals(isbn)) {
+						System.out.println("Livro ja cadastrado");
+						x = false;
 					}
-					if (x) {
-					    Livro livro = new Livro(titulo, autor, isbn, anoPub);
-					    acervo.add(livro);
-					}
+				}
+				if (x) {
+					Livro livro = new Livro(titulo, autor, isbn, anoPub);
+					acervo.add(livro);
+				}
+				break;
+
 			case 4:
 				System.out.println("- Adicionar novo usuario -");
 				System.out.print("Informe o nome: ");
@@ -71,10 +74,17 @@ public class Main {
 				    listaUsuarios.add(usuario);
 				}
 				break;
-			case 9:
-				System.exit(0);
-			default:
-				System.out.println("Opção Invalida");
+
+			case 5:
+				System.out.println("- Remover um livro -");
+				System.out.println("Informe o isbn do livro");
+				String isbn1 = scan.next();
+				for (Livro y : acervo) {
+					if (y.getIsbn().equals((isbn1))) {
+						acervo.removeIf(item -> item.equals(isbn1));
+					}
+				}
+				System.out.println("Livro removido");
 				break;
 
 			case 6:
@@ -88,18 +98,14 @@ public class Main {
 				}
 				System.out.println("Usuario removido");
 				break;
-				
-			case 5:
-				System.out.println("- Remover um livro -");
-				System.out.println("Informe o isbn do livro");
-				String isbn1 = scan.next();
-					for (Livro y : acervo) {
-						if (y.getIsbn().equals((isbn1))) {
-							acervo.removeIf(item -> item.equals(isbn1));
-						}
-					}
-					System.out.println("Livro removido");
-					break;
+
+			case 9:
+				System.exit(0);
+				break;
+
+			default:
+				System.out.println("Opção Invalida");
+				break;
 			}
 		}
 	}
