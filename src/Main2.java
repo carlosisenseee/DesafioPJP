@@ -12,8 +12,8 @@ public class Main2 {
             System.out.println("""
 					=== Biblioteca Piriri Parara ===
 					Digite para:
-					1 - Emprestar um livro -
-					2 - Devolver um livro -
+					1 - Emprestar um livro - ok
+					2 - Devolver um livro - ok
 					3 - Adicionar novo livro - ok
 					4 - Adicionar novo usuario - ok
 					5 - Remover livro - ok
@@ -65,8 +65,19 @@ public class Main2 {
                     } else if (!livroEncontrado) {
                         System.out.println("Livro não encontrado");
                     }
+                    break;
 
                 case 2:
+                    System.out.println("- Devolver um livro -");
+                    System.out.print("Informe o cpf do usuario: ");
+                    String devolverCpf = scan.next();
+                    System.out.print("Informe o ISBN do livro para devolução: ");
+                    String devolverISBN = scan.next();
+                    for (Usuario u : listaUsuarios) {
+                        if (u.getCpf().equals(devolverCpf)) {
+                            u.devolerLivro(devolverISBN);
+                        }
+                    }
                     break;
 
                 case 3:

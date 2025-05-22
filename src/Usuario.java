@@ -13,9 +13,14 @@ public class Usuario {
         }
     }
 
-    public void removeEmprestimo(Livro livro) {
-        emprestimos.remove(livro);
+    public void devolerLivro(String isbn) {
+        for (Livro l : emprestimos) {
+            if (l.getIsbn().equals(isbn)) {
+                emprestimos.remove(l);
+            }
+        }
     }
+
     public Usuario(String nome, String cpf) {
         setNome(nome);
         setCpf(cpf);
