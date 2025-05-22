@@ -32,15 +32,16 @@ public class Main2 {
                     String cpf3 = scan.next();
                     System.out.println("Informe o ISBN do livro: ");
                     String isbn2 = scan.next();
-                    boolean x1 = true;
-                    boolean y1 = true;
+                    boolean usuarioEncontrado = false;
+                    boolean livroEncontrado = false;
                     for (Usuario u : listaUsuarios) {
                         if (u.getCpf().equals(cpf3)) {
-                            x1 = false;
+                            usuarioEncontrado = true;
+
                             for (Livro l : acervo) {
                                 if (l.getIsbn().equals(isbn2)) {
+                                    livroEncontrado = true;
                                     u.addEmprestimo(l);
-                                    y1 = false;
                                     break;
                                 }
                             }
@@ -48,14 +49,22 @@ public class Main2 {
                         }
                     }
 
-                    if (x1 && y1) {
-                        System.out.println("Nem usuario nem livro foi encontrado");
-                    } else if (x1) {
-                        System.out.println("NAO ACHO PESSOA");
-                    } else if (y1) {
-                        System.out.println("NAO ACHO LIVRO");
+                if (!usuarioEncontrado) {
+                        for (Livro l : acervo) {
+                            if (l.getIsbn().equals(isbn2)) {
+                                livroEncontrado = true;
+                                break;
+                            }
+                        }
                     }
-                    break;
+
+                    if (!usuarioEncontrado && !livroEncontrado) {
+                        System.out.println("Nem usuario nem livro foi encontrado");
+                    } else if (!usuarioEncontrado) {
+                        System.out.println("Usuario não encontrado");
+                    } else if (!livroEncontrado) {
+                        System.out.println("Livro não encontrado");
+                    }
 
                 case 2:
                     break;

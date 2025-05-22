@@ -2,111 +2,135 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
-	public static void main(String[] args) {
-		Scanner scan = new Scanner(System.in);
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
 
-		ArrayList<Usuario> listaUsuarios = new ArrayList<>();
-		ArrayList<Livro> acervo = new ArrayList<>();
+        ArrayList<Usuario> listaUsuarios = new ArrayList<>();
+        ArrayList<Livro> acervo = new ArrayList<>();
 
-		while (true) {
-			System.out.println("""
-					=== Biblioteca Piriri Parara ===
-					Digite para:
-					1 - Emprestar um livro -
-					2 - Devolver um livro -
-					3 - Adicionar novo livro - ok
-					4 - Adicionar novo usuario - ok
-					5 - Remover livro - ok
-					6 - Remover usuario - ok
-					7 - Alterar livro -
-					8 - Alterar usuario -
-					9 - Sair - ok
-					""");
-			System.out.print("Informe a opção: ");
-			int temp = scan.nextInt();
-			scan.nextLine();
-			switch (temp) {
-			case 1:
-				break;
+        while (true) {
+            System.out.println("""
+                    === Biblioteca Piriri Parara ===
+                    Digite para:
+                    1 - Emprestar um livro -
+                    2 - Devolver um livro -
+                    3 - Adicionar novo livro - ok
+                    4 - Adicionar novo usuario - ok
+                    5 - Remover livro - ok
+                    6 - Remover usuario - ok
+                    7 - Alterar livro - ok
+                    8 - Alterar usuario -
+                    9 - Sair - ok
+                    """);
+            System.out.print("Informe a opção: ");
+            int temp = scan.nextInt();
+            scan.nextLine();
 
-			case 2:
-				break;
+            switch (temp) {
+                case 1:
+                    break;
 
-			case 3:
-				System.out.println("- Adicionar novo livro -");
-				System.out.print("Informe o titulo: ");
-				String titulo = scan.nextLine();
-				System.out.print("Informe o autor: ");
-				String autor = scan.nextLine();
-				System.out.print("informe o ISBN: ");
-				String isbn = scan.nextLine();
-				System.out.print("Informe o ano de publicação: ");
-				int anoPub = scan.nextInt();
-				boolean x = true;
-				for (Livro l : acervo) {
-					if (l.getIsbn().equals(isbn)) {
-						System.out.println("Livro ja cadastrado");
-						x = false;
-					}
-				}
-				if (x) {
-					Livro livro = new Livro(titulo, autor, isbn, anoPub);
-					acervo.add(livro);
-				}
-				break;
+                case 2:
+                    break;
 
-			case 4:
-				System.out.println("- Adicionar novo usuario -");
-				System.out.print("Informe o nome: ");
-				String nome = scan.nextLine();
-				System.out.print("Informe o cpf (apenas numeros): ");
-				String cpf = scan.next();
-				System.out.println();
-				boolean y = true;
-				for (Usuario u: listaUsuarios) {
-				    if (u.getCpf().equals(cpf)) {
-				         System.out.println("Cpf ja cadastrado");
-				         y = false;
-				     }
-				}
-				if (y) {
-				    Usuario usuario = new Usuario(nome, cpf);
-				    listaUsuarios.add(usuario);
-				}
-				break;
+                case 3:
+                    System.out.println("- Adicionar novo livro -");
+                    System.out.print("Informe o titulo: ");
+                    String titulo = scan.nextLine();
+                    System.out.print("Informe o autor: ");
+                    String autor = scan.nextLine();
+                    System.out.print("informe o ISBN: ");
+                    String isbn = scan.nextLine();
+                    System.out.print("Informe o ano de publicação: ");
+                    int anoPub = scan.nextInt();
+                    boolean x = true;
+                    for (Livro l : acervo) {
+                        if (l.getIsbn().equals(isbn)) {
+                            System.out.println("Livro ja cadastrado");
+                            x = false;
+                        }
+                    }
+                    if (x) {
+                        Livro livro = new Livro(titulo, autor, isbn, anoPub);
+                        acervo.add(livro);
+                    }
+                    break;
 
-			case 5:
-				System.out.println("- Remover um livro -");
-				System.out.println("Informe o isbn do livro");
-				String isbn1 = scan.next();
-				for (Livro l : acervo) {
-					if (l.getIsbn().equals((isbn1))) {
-						acervo.removeIf(item -> item.equals(isbn1));
-					}
-				}
-				System.out.println("Livro removido");
-				break;
+                case 4:
+                    System.out.println("- Adicionar novo usuario -");
+                    System.out.print("Informe o nome: ");
+                    String nome = scan.nextLine();
+                    System.out.print("Informe o cpf (apenas numeros): ");
+                    String cpf = scan.next();
+                    System.out.println();
+                    boolean y = true;
+                    for (Usuario u : listaUsuarios) {
+                        if (u.getCpf().equals(cpf)) {
+                            System.out.println("Cpf ja cadastrado");
+                            y = false;
+                        }
+                    }
+                    if (y) {
+                        Usuario usuario = new Usuario(nome, cpf);
+                        listaUsuarios.add(usuario);
+                    }
+                    break;
 
-			case 6:
-				System.out.println("- Remover usuario -");
-				System.out.println("Informe o CPf do usuario");
-				String cpf2 = scan.next();
-				for (Usuario u : listaUsuarios) {
-					if (u.getCpf().equals(cpf2)) {
-						listaUsuarios.removeIf(item -> item.equals(cpf2));
-					}
-				}
-				System.out.println("Usuario removido");
-				break;
+                case 5:
+                    System.out.println("- Remover um livro -");
+                    System.out.println("Informe o isbn do livro");
+                    String isbn1 = scan.next();
+                    for (Livro l : acervo) {
+                        if (l.getIsbn().equals((isbn1))) {
+                            acervo.removeIf(item -> item.equals(isbn1));
+                        }
+                    }
+                    System.out.println("\nLivro removido");
+                    System.out.println();
+                    break;
 
-			case 9:
-				System.exit(0);
-				break;
+                case 6:
+                    System.out.println("- Remover usuario -");
+                    System.out.println("Informe o CPf do usuario");
+                    String cpf2 = scan.next();
+                    for (Usuario u : listaUsuarios) {
+                        if (u.getCpf().equals(cpf2)) {
+                            listaUsuarios.removeIf(item -> item.equals(cpf2));
+                        }
+                    }
+                    System.out.println("Usuario removido");
+                    break;
 
-			default:
-				System.out.println("Opção Invalida");
-				break;
-			}
-		}
-	}
+                case 7:
+                    System.out.println("Alterar livro -");
+                    System.out.println("Informe o isbn do livro que deseja alterar: ");
+                    String isbn2 = scan.next();
+                    for (Livro l : acervo) {
+                        if (l.getIsbn().equals((isbn2))) {
+                            System.out.println(l.toString());
+                            System.out.println("informe o novo titulo: ");
+                            l.setTitulo(scan.nextLine());
+                            System.out.println("infomre o novo autor: ");
+                            l.setAutor(scan.nextLine());
+                            System.out.println("Informe o novo ISBN: ");
+                            l.setIsbn(scan.nextLine());
+                            System.out.println("Informe o ano da publicação do novo livro: ");
+                            l.setAnoPublicacao(scan.nextInt());
+                        }
+                    }
+                    System.out.println("Digite o isbn do novo livro");
+                    String isbn3 = scan.next();
+                    System.out.println();
+                    break;
+
+                case 9:
+                    System.exit(0);
+                    break;
+
+                default:
+                    System.out.println("Opção Invalida");
+                    break;
+            }
+        }
+    }
 }

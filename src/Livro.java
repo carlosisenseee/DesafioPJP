@@ -46,4 +46,9 @@ public class Livro {
     public void setTitulo(String titulo) {
         this.titulo = titulo;
     }
+
+    @Override
+    public String toString() {
+        return "\nNome: " + getTitulo() + " \nAutor: " + getAutor() + " \nISBN: " + getIsbn() + " \nAno de Publicação: " + getAnoPublicacao();
+    }
 }
