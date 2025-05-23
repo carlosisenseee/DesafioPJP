@@ -178,9 +178,10 @@ public class Main2 {
     public static void removerUsuario(String cpf) {
         for (Usuario u : listaUsuarios) {
             if (u.getCpf().equals(cpf)) {
-                listaUsuarios.removeIf(item -> item.equals(cpf));
+                listaUsuarios.remove(u);
+                break;
             }
         }
-        System.out.println("Usuario removido");
+        System.out.println("Usuario removido\n");
     }
 }

@@ -17,7 +17,11 @@ public class Usuario {
         for (Livro l : emprestimos) {
             if (l.getIsbn().equals(isbn)) {
                 emprestimos.remove(l);
+                System.out.println("Livro devolvido!");
+            } else {
+                System.out.println("Livro não encontrado em emprestimos");
             }
+            break;
         }
     }
 
@@ -49,8 +53,8 @@ public class Usuario {
     public void setEmprestimos(ArrayList<Livro> emprestimos) {
         this.emprestimos = emprestimos;
     }
+
     public String toString() {
-    	return "Nome:" + getNome() +  "\n Cpf:" + getCpf();
-    	
+    	return "Nome:" + getNome() +  "\nCpf:" + getCpf();
     }
 }
