@@ -23,7 +23,7 @@ public class Main {
                     7 - Exibir acervo completo
                     8 - Exibir todos os usuarios
                     9 - Exibir emprestimo de um usuario
-                    10 - Sair - ok
+                    10 - Sair
                     """);
             System.out.print("Informe a opção: ");
             int temp = scan.nextInt();
