@@ -49,4 +49,8 @@ public class Usuario {
     public void setEmprestimos(ArrayList<Livro> emprestimos) {
         this.emprestimos = emprestimos;
     }
+    public String toString() {
+    	return "Nome:" + getNome() +  "\n Cpf:" + getCpf();
+    	
+    }
 }

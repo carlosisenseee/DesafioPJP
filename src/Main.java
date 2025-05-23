@@ -18,9 +18,10 @@ public class Main {
                     4 - Adicionar novo usuario - ok
                     5 - Remover livro - ok
                     6 - Remover usuario - ok
-                    7 - Alterar livro - ok
-                    8 - Alterar usuario -
-                    9 - Sair - ok
+                    7 - Exibir acervo completo - 
+                    8 - Exibir todos os usuarios -
+                    9 - Exibir emprestimo de um usuario - 
+                    10 - Sair - ok
                     """);
             System.out.print("Informe a opção: ");
             int temp = scan.nextInt();
@@ -101,29 +102,29 @@ public class Main {
                     System.out.println("Usuario removido");
                     break;
 
+                    
+                    //exibir acervo completo 
+             
                 case 7:
-                    System.out.println("Alterar livro -");
-                    System.out.println("Informe o isbn do livro que deseja alterar: ");
-                    String isbn2 = scan.next();
-                    for (Livro l : acervo) {
-                        if (l.getIsbn().equals((isbn2))) {
-                            System.out.println(l.toString());
-                            System.out.println("informe o novo titulo: ");
-                            l.setTitulo(scan.nextLine());
-                            System.out.println("infomre o novo autor: ");
-                            l.setAutor(scan.nextLine());
-                            System.out.println("Informe o novo ISBN: ");
-                            l.setIsbn(scan.nextLine());
-                            System.out.println("Informe o ano da publicação do novo livro: ");
-                            l.setAnoPublicacao(scan.nextInt());
-                        }
+                    System.out.println("Exibir acervo-");
+                    for (Livro livro: acervo  ) {
+                    	System.out.println(livro);
                     }
-                    System.out.println("Digite o isbn do novo livro");
-                    String isbn3 = scan.next();
+                    System.out.println();
+                   break;
+                   
+                case 8:
+                	System.out.println("Exibir usuario");
+                	for (Usuario usuario : listaUsuarios) {
+                		System.out.println(usuario.toString());
+
+                	
+                	}
                     System.out.println();
                     break;
-
-                case 9:
+                    
+                    
+                case 10:
                     System.exit(0);
                     break;
 
