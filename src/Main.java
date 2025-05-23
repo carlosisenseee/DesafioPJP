@@ -117,8 +117,6 @@ public class Main {
                 	System.out.println("Exibir usuario");
                 	for (Usuario usuario : listaUsuarios) {
                 		System.out.println(usuario.toString());
-
-                	
                 	}
                     System.out.println();
                     break;
