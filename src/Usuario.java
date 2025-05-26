@@ -1,57 +1,29 @@
 import java.util.ArrayList;
 
-public class Usuario {
-    private String nome;
-    private String cpf;
-    private ArrayList<Livro> emprestimos = new ArrayList<>();
+public class Usuario extends Pessoa{
 
     public void addEmprestimo(Livro livro) {
-        if (emprestimos.size() < 3) {
-            emprestimos.add(livro);
+        if (getEmprestimos().size() < 3) {
+            getEmprestimos().add(livro);
         } else {
-            System.out.println("O usuario ja esta com 3 livros emprestados");
+            System.out.println("O usuario ja esta com 3 livros emprestados\n");
         }
     }
 
     public void devolerLivro(String isbn) {
-        for (Livro l : emprestimos) {
+        for (Livro l : getEmprestimos()) {
             if (l.getIsbn().equals(isbn)) {
-                emprestimos.remove(l);
-                System.out.println("Livro devolvido!");
+                getEmprestimos().remove(l);
+                System.out.println("Livro devolvido!\n");
             } else {
-                System.out.println("Livro não encontrado em emprestimos");
+                System.out.println("Livro não encontrado em emprestimos\n");
             }
             break;
         }
     }
 
     public Usuario(String nome, String cpf) {
-        setNome(nome);
-        setCpf(cpf);
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
-    public ArrayList<Livro> getEmprestimos() {
-        return emprestimos;
-    }
-
-    public void setEmprestimos(ArrayList<Livro> emprestimos) {
-        this.emprestimos = emprestimos;
+        super(nome, cpf);
     }
 
     public String toString() {

@@ -19,7 +19,7 @@ public class Livro {
         if (anoPublicacao >= 0) {
             this.anoPublicacao = anoPublicacao;
         } else {
-            System.out.println("Dado Invalido");
+            System.out.println("Dado Invalido\n");
         }
     }
 

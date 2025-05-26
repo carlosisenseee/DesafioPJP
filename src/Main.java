@@ -1,3 +1,5 @@
+import com.sun.security.jgss.GSSUtil;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -5,10 +7,28 @@ public class Main {
 
     static ArrayList<Usuario> listaUsuarios = new ArrayList<>();
     static ArrayList<Livro> acervo = new ArrayList<>();
+    static ArrayList<Funcionario> colaboradores = new ArrayList<>();
 
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
 
+        //Emprestar Livro, Usuario pode pegar 3 livros iguas, e erro na mensagem ao atingir a quantidade maxima
+
+        //Implementar Funcionario
+
+        Livro livro1 = new Livro("Livro1", "Autor1", "1", 1980);
+        Livro livro2 = new Livro("Livro2", "Autor2", "2", 2000);
+        Livro livro3 = new Livro("Livro3", "Autor3", "3", 2000);
+        Livro livro4 = new Livro("Livro4", "Autor4", "4", 2000);
+
+        Usuario u1 = new Usuario("Carlos", "123");
+
+        listaUsuarios.add(u1);
+
+        acervo.add(livro1);
+        acervo.add(livro2);
+        acervo.add(livro3);
+        acervo.add(livro4);
 
         while (true) {
             System.out.println("""
@@ -23,7 +43,10 @@ public class Main {
                     7 - Exibir acervo completo
                     8 - Exibir todos os usuarios
                     9 - Exibir emprestimo de um usuario
-                    10 - Sair
+                    10 - Adicionar Funcionario
+                    11 - Excluir Funcionario
+                    12 - Mostrar Funcionarios
+                    13 - Sair
                     """);
             System.out.print("Informe a opção: ");
             int temp = scan.nextInt();
@@ -48,7 +71,13 @@ public class Main {
 
                 case 9: exibirEmprestimos();break;
 
-                case 10: System.exit(0); break;
+                case 10: adicionarFuncionario(); break;
+
+                case 11: excluirFuncionario(); break;
+
+                case 12: mostrarFuncionarios(); break;
+
+                case 13: System.exit(0); break;
 
                 default: System.out.println("Opção Invalida"); break;
             }
@@ -232,6 +261,66 @@ public class Main {
                     System.out.println(u.getEmprestimos());
                 }
             }
+        }
+        System.out.println();
+    }
+
+    public static void adicionarFuncionario() {
+        System.out.println("- Adicionar Funcionario -");
+        System.out.println("Informe o nome do funcionario: ");
+        String nome = (new Scanner(System.in).nextLine());
+        System.out.println("Informe o cpf do funcionario: ");
+        String cpf = new Scanner(System.in).nextLine();
+        System.out.println("Informe o cargo do funcionario: ");
+        String cargo = new Scanner(System.in).nextLine();
+
+        boolean check = true;
+        for (Usuario u : listaUsuarios) {
+            if (u.getCpf().equals(cpf)) {
+                System.out.println("Existem um usuario ja cadastrado com esse cpf\n");
+                check = false;
+                break;
+            }
+        }
+        for (Funcionario f : colaboradores) {
+            if (f.getCpf().equals(cpf)) {
+                System.out.println("Funcionario ja cadastrado\n");
+                check = false;
+                break;
+            }
+        }
+
+        if (check) {
+            System.out.println("Funcionario cadastrado com sucesso\n");
+            colaboradores.add(new Funcionario(nome, cpf, cargo));
+        }
+    }
+
+    public static void excluirFuncionario() {
+        System.out.println("- Excluir Funcionario -");
+        System.out.println("Informe o cpf do funcionario: ");
+        String cpf = new Scanner(System.in).nextLine();
+
+        boolean check = true;
+        for (Funcionario f : colaboradores) {
+            if (f.getCpf().equals(cpf)) {
+                colaboradores.remove(f);
+                check = false;
+                break;
+            }
+        }
+
+        if (!check) {
+            System.out.println("Funcionario removido com sucesso\n");
+        } else {
+            System.out.println("Funcionario não encontrado\n");
+        }
+    }
+
+    public static void mostrarFuncionarios() {
+        System.out.println("- Mostrar Funcionarios -");
+        for (Funcionario f : colaboradores) {
+            System.out.println(f.toString());
         }
         System.out.println();
     }
