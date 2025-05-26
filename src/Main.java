@@ -12,9 +12,10 @@ public class Main {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
 
-        //Emprestar Livro, Usuario pode pegar 3 livros iguas, e erro na mensagem ao atingir a quantidade maxima
 
-        //Implementar Funcionario
+        //Implementar os funcionarios nas funcoes
+        //Implementar senha nos Usuarios para Pegar Livros
+        //Criar uma classe emprestimo para manipular os emprestimos
 
         Livro livro1 = new Livro("Livro1", "Autor1", "1", 1980);
         Livro livro2 = new Livro("Livro2", "Autor2", "2", 2000);
@@ -89,6 +90,7 @@ public class Main {
             System.out.println("Nenhum funcionario Cadastrado\n");
         } else {
             System.out.println("- Emprestar um livro -");
+            String cpfFuncionario = new Scanner(System.in).nextLine();
             System.out.print("Informe o cpf do usuario: ");
             String cpf = (new Scanner(System.in).nextLine());
             System.out.print("Informe o ISBN do livro: ");
