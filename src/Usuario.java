@@ -3,10 +3,15 @@ import java.util.ArrayList;
 public class Usuario extends Pessoa{
 
     public void addEmprestimo(Livro livro) {
-        if (getEmprestimos().size() < 3) {
-            getEmprestimos().add(livro);
+        if (super.emprestimos(livro)) {
+            System.out.println("O Usuario ja esta com esse livro emprestado\n");
         } else {
-            System.out.println("O usuario ja esta com 3 livros emprestados\n");
+            if (getEmprestimos().size() < 3) {
+                System.out.println("Livro emprestado\n");
+                getEmprestimos().add(livro);
+            } else {
+                System.out.println("O usuario ja esta com 3 livros emprestados\n");
+            }
         }
     }
 

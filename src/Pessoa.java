@@ -5,6 +5,15 @@ public abstract class Pessoa {
     private String cpf;
     private ArrayList<Livro> emprestimos = new ArrayList<>();
 
+    public boolean emprestimos(Livro livro) {
+        for (Livro l : emprestimos) {
+            if (l.equals(livro)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public Pessoa(String nome, String cpf) {
         setNome(nome);
         setCpf(cpf);
