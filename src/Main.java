@@ -30,88 +30,36 @@ public class Main {
             scan.nextLine();
 
             switch (temp) {
-                case 1:
-                    System.out.println("- Emprestar um livro -");
-                    System.out.print("Informe o cpf do usuario: ");
-                    String cpf3 = scan.next();
-                    System.out.print("Informe o ISBN do livro: ");
-                    String isbn2 = scan.next();
-                    emprestarLivro(cpf3, isbn2);
-                    break;
+                case 1: emprestarLivro();break;
 
-                case 2:
-                    System.out.println("- Devolver um livro -");
-                    System.out.print("Informe o cpf do usuario: ");
-                    String devolverCpf = scan.next();
-                    System.out.print("Informe o ISBN do livro para devolução: ");
-                    String devolverISBN = scan.next();
-                    devolverLivro(devolverCpf, devolverISBN);
-                    break;
+                case 2: devolverLivro();break;
 
-                case 3:
-                    System.out.println("- Adicionar novo livro -");
-                    System.out.print("Informe o titulo: ");
-                    String titulo = scan.nextLine();
-                    System.out.print("Informe o autor: ");
-                    String autor = scan.nextLine();
-                    System.out.print("informe o ISBN: ");
-                    String isbn = scan.nextLine();
-                    System.out.print("Informe o ano de publicação: ");
-                    int anoPub = scan.nextInt();
-                    adicionarLivro(titulo, autor, isbn, anoPub);
-                    break;
+                case 3: adicionarLivro();break;
 
-                case 4:
-                    System.out.println("- Adicionar novo usuario -");
-                    System.out.print("Informe o nome: ");
-                    String nome = scan.nextLine();
-                    System.out.print("Informe o cpf (apenas numeros): ");
-                    String cpf = scan.next();
-                    System.out.println();
-                    adicionarUsuario(nome, cpf);
-                    break;
+                case 4: adicionarUsuario();break;
 
+                case 5: removerLivro();break;
 
-                case 5:
-                    System.out.println("- Remover um livro -");
-                    System.out.print("Informe o isbn do livro: ");
-                    String isbn1 = scan.next();
-                    removerLivro(isbn1);
-                    break;
+                case 6: removerUsuario();break;
 
-                case 6:
-                    System.out.println("- Remover usuario -");
-                    System.out.print("Informe o CPf do usuario: ");
-                    String cpf2 = scan.next();
-                    removerUsuario(cpf2);
-                    break;
-                case 7:
-                    System.out.println("- Exibir acervo completo -");
-                    exibeAcervo();
-                    break;
+                case 7: exibeAcervo();break;
                    
-                case 8:
-                	System.out.println("- Exibir todos os usuarios -");
-                	exibeUsuarios();
-                    break;
+                case 8: exibeUsuarios();break;
 
-                case 9:
-                    System.out.println("- Exibir emprestimos de um usuario -");
-                    System.out.print("Informe o cpf do usuario: ");
-                    String cpfExibir = scan.next();
-                    exibirEmprestimos(cpfExibir);
-                    break;
-                case 10:
-                    System.exit(0);
-                    break;
+                case 9: exibirEmprestimos();break;
 
-                default:
-                    System.out.println("Opção Invalida");
-                    break;
+                case 10: System.exit(0); break;
+
+                default: System.out.println("Opção Invalida"); break;
             }
         }
     }
-    public static void emprestarLivro(String cpf, String isbn) {
+    public static void emprestarLivro() {
+        System.out.println("- Emprestar um livro -");
+        System.out.print("Informe o cpf do usuario: ");
+        String cpf = (new Scanner(System.in).nextLine());
+        System.out.print("Informe o ISBN do livro: ");
+        String isbn = (new Scanner(System.in).nextLine());
         boolean usuarioEncontrado = false;
         boolean livroEncontrado = false;
         for (Usuario u : listaUsuarios) {
@@ -149,7 +97,12 @@ public class Main {
         }
     }
 
-    public static void devolverLivro(String cpf, String isbn) {
+    public static void devolverLivro() {
+        System.out.println("- Devolver um livro -");
+        System.out.print("Informe o cpf do usuario: ");
+        String cpf = (new Scanner(System.in).nextLine());
+        System.out.print("Informe o ISBN do livro para devolução: ");
+        String isbn = (new Scanner(System.in).nextLine());
         for (Usuario u : listaUsuarios) {
             if (u.getCpf().equals(cpf)) {
                 if (u.getEmprestimos().isEmpty()) {
@@ -164,7 +117,16 @@ public class Main {
         System.out.println();
     }
 
-    public static void adicionarLivro(String titulo, String autor, String isbn, int anoPub) {
+    public static void adicionarLivro() {
+        System.out.println("- Adicionar novo livro -");
+        System.out.print("Informe o titulo: ");
+        String titulo = (new Scanner(System.in).nextLine());
+        System.out.print("Informe o autor: ");
+        String autor = (new Scanner(System.in).nextLine());
+        System.out.print("informe o ISBN: ");
+        String isbn = (new Scanner(System.in).nextLine());
+        System.out.print("Informe o ano de publicação: ");
+        int anoPub = (new Scanner(System.in).nextInt());
         boolean x = true;
         for (Livro l : acervo) {
             if (l.getIsbn().equals(isbn)) {
@@ -179,7 +141,13 @@ public class Main {
         System.out.println();
     }
 
-    public static void adicionarUsuario(String nome, String cpf) {
+    public static void adicionarUsuario() {
+        System.out.println("- Adicionar novo usuario -");
+        System.out.print("Informe o nome: ");
+        String nome = (new Scanner(System.in).nextLine());
+        System.out.print("Informe o cpf (apenas numeros): ");
+        String cpf = (new Scanner(System.in)).nextLine();
+        System.out.println();
         boolean y = true;
         for (Usuario u : listaUsuarios) {
             if (u.getCpf().equals(cpf)) {
@@ -193,7 +161,10 @@ public class Main {
         }
     }
 
-    public static void removerLivro(String isbn) {
+    public static void removerLivro() {
+        System.out.println("- Remover um livro -");
+        System.out.print("Informe o isbn do livro: ");
+        String isbn = (new Scanner(System.in).nextLine());
         boolean control = true;
         for (Livro l : acervo) {
             if (l.getIsbn().equals((isbn))) {
@@ -208,7 +179,10 @@ public class Main {
         }
     }
 
-    public static void removerUsuario(String cpf) {
+    public static void removerUsuario() {
+        System.out.println("- Remover usuario -");
+        System.out.print("Informe o CPf do usuario: ");
+        String cpf = (new Scanner(System.in).nextLine());
         boolean control = true;
         for (Usuario u : listaUsuarios) {
             if (u.getCpf().equals(cpf)) {
@@ -224,7 +198,7 @@ public class Main {
     }
 
     public static void exibeAcervo() {
-
+        System.out.println("- Exibir acervo completo -");
         if (acervo.isEmpty()) {
             System.out.println("Não existem livros no acervo");
         } else {
@@ -236,6 +210,7 @@ public class Main {
     }
 
     public static void exibeUsuarios() {
+        System.out.println("- Exibir todos os usuarios -");
         if (listaUsuarios.isEmpty()) {
             System.out.println("Nenhum usuario cadastrado");
         } else
@@ -245,7 +220,10 @@ public class Main {
         System.out.println();
     }
 
-    public static void exibirEmprestimos(String cpf) {
+    public static void exibirEmprestimos() {
+        System.out.println("- Exibir emprestimos de um usuario -");
+        System.out.print("Informe o cpf do usuario: ");
+        String cpf = (new Scanner(System.in)).nextLine();
         for (Usuario u : listaUsuarios) {
             if (u.getCpf().equals(cpf)) {
                 if (u.getEmprestimos().isEmpty()) {
